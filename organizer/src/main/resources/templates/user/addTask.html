@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+<head>
+    <title>Add Task</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="content" class="max-w-md mx-auto" th:object="${reminders}">  
+    <!-- Display success message if available -->
+    <div th:if="${successMessage}" class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-900 dark:text-green-400" role="alert">
+        <span th:text="${successMessage}">Task added successfully!</span>
+    </div>
+
+    <form method="post" th:action="@{/user/contact/addTask}">
+        <!-- Hidden field to include remName in the form submission -->
+        <input type="hidden" th:field="*{remName}" >
+
+        <div class="contact-name text-3xl font-bold text-blue-700 my-6 text-center">
+           <span th:text="*{remName}">John Doe</span>
+        </div>
+        <div class="mb-5">
+            <label for="task-title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Task Title</label>
+            <input type="text" id="task-title" th:field="*{taskTitle}" class="bg-gray-50 border border-gray-300 text-gray-900 dark:text-gray-300 placeholder-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600" placeholder="Enter task title" required>
+        </div>
+        <div class="mb-5">
+            <label for="task-desc" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Task Description</label>
+            <textarea id="task-desc" th:field="*{task}" class="bg-gray-50 border border-gray-300 text-gray-900 dark:text-gray-300 placeholder-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600" placeholder="Brief description about the task" required></textarea>
+        </div>
+        <div class="flex items-center mb-5">
+            <input id="priority" type="checkbox" th:field="*{priority}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="priority" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Priority</label>
+        </div>
+        <div class="flex justify-end">
+            <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script data-th-src="@{'/js/admin.js'}"></script>
+<script>
+    console.log("this is add task page");
+</script>
+</body>
+</html>

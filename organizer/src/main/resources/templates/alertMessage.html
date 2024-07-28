@@ -1,0 +1,30 @@
+
+
+<!-- Success messages -->
+<div class="grid items-center gap-2 mb-2 md:grid-cols-3" 
+ data-th-fragment="regMessage">
+    <div class="flex items-center justify-center">
+        <div class="relative">
+            <!-- Thumbs-up icon for success -->
+            <img src="/images/thumsup.png" alt="Thumbs Up" class="h-12 w-15 mx-auto mb-2">
+            <label for="filled_success" class="absolute text-sm text-green-600 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Thank you</label>
+        </div>
+        <p id="filled_success_help" class="ml-2 text-xs text-green-600 dark:text-green-400"><span class="font-medium">Well done!</span> Some success message.</p>
+    </div>
+</div>
+
+<!-- Error messages -->
+<div class="grid items-end gap-6 md:grid-cols-3">
+    <div>
+        <div class="relative">
+            <!-- Thumbs-down icon for error -->
+            <img src="/images/thumsup.png" alt="Thumbs Down" class="h-8 w-8 mx-auto mb-2">
+            <input type="text" id="filled_error" aria-describedby="filled_error_help" class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 appearance-none dark:text-white dark:border-red-500 focus:outline-none focus:ring-0 border-red-600 focus:border-red-600 dark:focus-border-red-500 peer" placeholder=" " />
+            <label for="filled_error" class="absolute text-sm duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 text-red-600 dark:text-red-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Filled error</label>
+        </div>
+        <p id="filled_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span class="font-medium">Oh, snap!</span> Some error message.</p>
+    </div>
+</div>
+
+<!-- Additional content or closing tags -->
+

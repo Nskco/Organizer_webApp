@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Email</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css">
+    <style>
+        body {
+            background-color: #1a202c;
+        }
+        .form-container {
+            background-color: #2d3748;
+        }
+        .form-container label {
+            color: #cbd5e0;
+        }
+        .form-container input {
+            background-color: #4a5568;
+            color: #e2e8f0;
+        }
+        .form-container button {
+            background-color: #1cac66;
+        }
+        .form-container button:hover {
+            background-color: #68db90;
+        }
+        .form-container .error-message {
+            color: #e53e3e;
+        }
+        .resend-button {
+            background-color: #f6ad55;
+            border-color: #f6ad55;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+        .resend-button:hover {
+            background-color: #ed8936;
+            border-color: #ed8936;
+        }
+        .disabled-button {
+            background-color: #4a5568;
+            border-color: #4a5568;
+            cursor: not-allowed;
+        }
+        .timer {
+            color: #cbd5e0;
+            font-size: 0.875rem;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="form-container p-8 rounded-lg shadow-md w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-4 text-center text-white">Verify Your Email</h2>
+        <form th:action="@{/verifyOtp}" th:object="${emailVerify2}" method="post">
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-medium">Email</label>
+                <input th:field="*{email}" type="email" id="email" name="email" required class="mt-1 block w-full border border-gray-600 rounded-md shadow-sm" style="padding: 10px; height: 50px;" readonly>
+            </div>
+            <input type="hidden" th:field="*{otp}" id="otp" name="otp">
+            <div class="mb-4">
+                <label for="otp" class="block text-sm font-medium">OTP</label>
+                <input th:field="*{otp2}" type="text" id="otp2" name="otp2" required class="mt-1 block w-full border border-gray-600 rounded-md shadow-sm" style="padding: 6px; height: 35px;">
+                <div th:if="${#fields.hasErrors('otp2')}" class="error-message mt-2" th:errors="*{otp2}">OTP does not match.</div>
+            </div>
+            <button type="submit" class="w-full py-2 px-4 text-white rounded-md">Verify</button>
+            <!-- Resend OTP Button with Timer -->
+            <div class="flex items-center mt-4">
+                <button id="resendButton" type="button" class="resend-button text-white rounded-md mr-2" onclick="resendOtp()" disabled>Resend OTP</button>
+                <span id="timer" class="timer">60</span>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function updateTimer(remainingTime) {
+            const timerElement = document.getElementById('timer');
+            timerElement.textContent = remainingTime;
+        }
+
+        function enableResendButton() {
+            const resendButton = document.getElementById('resendButton');
+            resendButton.disabled = false;
+        }
+
+        function resendOtp() {
+            location.reload(); // Simulate resend OTP action
+        }
+
+        function startCountdown(duration) {
+            let remainingTime = duration;
+            const timerElement = document.getElementById('timer');
+            const resendButton = document.getElementById('resendButton');
+            
+            updateTimer(remainingTime); // Initialize timer display
+
+            const timerInterval = setInterval(() => {
+                if (remainingTime <= 0) {
+                    clearInterval(timerInterval);
+                    timerElement.textContent = '0';
+                    enableResendButton();
+                } else {
+                    updateTimer(remainingTime);
+                    remainingTime -= 1;
+                }
+            }, 1000);
+        }
+
+        // Start countdown timer of 60 seconds
+        startCountdown(60);
+    </script>
+</body>
+</html>

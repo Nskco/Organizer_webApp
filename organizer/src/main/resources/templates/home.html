@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+<head>
+    <title>Organizer - Home</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 dark:bg-gray-900">
+    <div id="content">
+        <section class="text-gray-600 body-font">
+          <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+            <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+              <div class="relative overflow-hidden rounded-lg border-8 border-gradient-to-br from-indigo-500 via-purple-600 to-blue-500 shadow-lg">
+                <img class="object-cover object-center w-full h-full rounded-lg" alt="hero" src="/images/cloud.png">
+              </div>
+            </div>
+            <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+              <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 dark:text-white">
+                Welcome to Organizer
+                <br class="hidden lg:inline-block">Your Personal Contact Manager
+              </h1>
+              <p class="mb-8 leading-relaxed text-gray-700 dark:text-gray-300">
+                Organizer is a powerful tool designed to help you manage and keep track of your important contacts with ease. Whether you're managing business connections, personal contacts, or a combination of both, Organizer provides a simple and effective way to store and access your information.
+                <br><br>
+                With features like intuitive contact organization, seamless integration, and a user-friendly interface, Organizer is here to streamline your contact management process and ensure you never miss an important connection.
+              </p>
+              <div class="flex justify-center">
+                <a href="/verify" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800">
+                  <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                    Get Started
+                  </span>
+                </a>
+                <a href="/login" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800">
+                  <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                    Login
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+    </div>
+    <script>
+        console.log("home page");
+    </script>
+</body>
+</html>

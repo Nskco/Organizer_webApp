@@ -1,0 +1,68 @@
+<html lang="en" th:replace="~{base:: parent (~{:: #content},~{::title},~{::script})}">
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <div id="content">
+        <div class="flex justify-center dark:bg-gray-900">
+            <form 
+            method="post" data-th-action="@{/loginAuth}"
+            class="max-w-lg mx-auto bg-blue-100 p-8 rounded-lg dark:bg-gray-800 border-gray-600 shadow-md">
+            <h1 class="text-4xl font-semibold text-green-500 justify-center pb-6">Login</h1>
+            <div class="text-sm font-bold text-red-900" th:if="${param.error}">
+                Invalid username or password.</div>
+            <div class="text-sm font-bold text-green-900" th:if="${param.logout}">
+                You have been logged out.</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  
+                    <div>
+                        <div class="mb-5">
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+                            <input name="email" type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@provider.com" required />
+                        </div>
+                        <div class="mb-5 relative">
+                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
+                            <input name="password" type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 pr-10" required />
+                            <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 flex items-center pr-3" style="top: 55%;">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zm4.5 0a8.5 8.5 0 01-16.858 2.141M21 12a9 9 0 10-9 9" />
+                                </svg>
+                            </button>
+                        </div>
+                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button>
+                    </div>
+                    <div class="flex items-center justify-center bg-gray-100 dark:bg-gray-700 p-6 rounded-lg">
+                        <img src="/images/login_ii.png" alt="Placeholder Image" class="rounded-lg shadow-md">
+                    </div>
+                </div>
+                <div class="social-button-container mt-5">
+                    <a class="login-with-google-btn  "data-th-href="@{/oauth2/authorization/google}">Login with google</a>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            const passwordField = document.getElementById('password');
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+    
+            // Toggle the eye icon
+            this.innerHTML = type === 'password' ? 
+                `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zm4.5 0a8.5 8.5 0 01-16.858 2.141M21 12a9 9 0 10-9 9" />
+                </svg>` :
+                `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zm4.5 0a8.5 8.5 0 01-16.858 2.141M21 12a9 9 0 10-9 9" />
+                </svg>`;
+        });
+    
+    
+   
+        console.log("Login page");
+    </script>
+</body>
+</html>
