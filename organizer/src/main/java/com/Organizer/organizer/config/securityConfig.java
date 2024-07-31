@@ -5,29 +5,20 @@ import java.beans.Customizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 import com.Organizer.organizer.services.CustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
 public class securityConfig  {
-    @Autowired
-    private OAuthAuthenticationSuccessHandler Handler;
+
 
     @Autowired
     private CustomUserDetailsService userDetailsService;
@@ -114,11 +105,7 @@ public class securityConfig  {
         logutP.logoutSuccessUrl("/login?logout=true");
     });
 
-    //auth configuration for google
-    httpSecurity.oauth2Login(oauth->{
-        oauth.loginPage("/login");
-        oauth.successHandler(Handler);
-    });
+
     return httpSecurity.build();
 
     }
