@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import com.Organizer.organizer.entity.Reminders;
 import com.Organizer.organizer.entity.contact;
 import com.Organizer.organizer.entity.user;
-import com.Organizer.organizer.repoistory.remindersRepo;
 import com.Organizer.organizer.services.contactService;
 import com.Organizer.organizer.services.userServices;
 import com.Organizer.organizer.services.contactRelated.remindersServices;

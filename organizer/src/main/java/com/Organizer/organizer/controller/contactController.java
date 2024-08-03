@@ -2,7 +2,6 @@ package com.Organizer.organizer.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.security.Principal;
 
@@ -19,13 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.util.UriUtils;
 
 import com.Organizer.organizer.entity.Email;
 import com.Organizer.organizer.entity.contact;
 import com.Organizer.organizer.entity.contactForm;
 import com.Organizer.organizer.entity.Reminders;
-import com.Organizer.organizer.entity.Email;
 import com.Organizer.organizer.entity.user;
 import com.Organizer.organizer.services.EmailService;
 import com.Organizer.organizer.services.ImageServices;

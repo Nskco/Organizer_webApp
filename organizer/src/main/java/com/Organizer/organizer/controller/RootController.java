@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import com.Organizer.organizer.helpers.helpers;
 
 import com.Organizer.organizer.entity.user;
-import com.Organizer.organizer.repoistory.userRepoistory;
 import com.Organizer.organizer.services.userServices;
 
 @ControllerAdvice

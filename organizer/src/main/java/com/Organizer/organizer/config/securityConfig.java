@@ -73,32 +73,12 @@ public class securityConfig  {
             loginPage.loginPage("/login")
             .loginProcessingUrl("/loginAuth")
             .successForwardUrl("/user/dashboard")
-            // .failureForwardUrl("/login?error=true")
-            // .successForwardUrl()
+           
             .usernameParameter("email")
             .passwordParameter("password");
-            // .failureHandler(new AuthenticationFailureHandler() {
-        //     @Override
-        //     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception){
-        //         throw new UnsupportedOperationException("Not found") 
-            
-        //     }
-        //     });
-            
+           
         });
-    // protected void configure(HttpSecurity http) throws Exception {
-    //     http
-    //         .authorizeRequests()
-    //             .antMatchers("/register", "/login", "/css/**", "/js/**").permitAll()
-    //             .anyRequest().authenticated()
-    //         .and()
-    //         .formLogin()
-    //             .loginPage("/login")
-    //             .defaultSuccessUrl("/home", true)
-    //             .permitAll()
-    //         .and()
-    //         .logout()
-    //             .permitAll();
+
         httpSecurity.csrf(AbstractHttpConfigurer::disable);
     httpSecurity.logout(logutP->{
         logutP.logoutUrl("/logout");
